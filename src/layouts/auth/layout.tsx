@@ -7,8 +7,6 @@ import { RouterLink } from 'src/routes/components';
 
 import { stylesMode } from 'src/theme/styles';
 
-import { Logo } from 'src/components/logo';
-
 import { Main } from './main';
 import { HeaderSection } from '../core/header-section';
 import { LayoutSection } from '../core/layout-section';
@@ -49,7 +47,6 @@ export function AuthLayout({ sx, children, header }: AuthLayoutProps) {
                 This is an info Alert.
               </Alert>
             ),
-            leftArea: <Logo />,
             rightArea: (
               <Link
                 component={RouterLink}
@@ -82,7 +79,6 @@ export function AuthLayout({ sx, children, header }: AuthLayoutProps) {
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
-          backgroundImage: `url(/assets/background/overlay.jpg)`,
           [stylesMode.dark]: { opacity: 0.08 },
         },
         ...sx,

@@ -50,16 +50,26 @@ export function AccountPopover({ data = [], sx, ...other }: AccountPopoverProps)
     [handleClosePopover, router]
   );
 
+  const handleClick = async () => {
+    try {
+      router.push('/');
+      console.log('[HOLA]');
+      handleClosePopover();
+    } catch (error) {
+      console.log('[ERROR] >>', error);
+    }
+  } 
+
   return (
     <>
       <IconButton
         onClick={handleOpenPopover}
         sx={{
-          p: '2px',
+          p: '3px',
           width: 40,
           height: 40,
           background: (theme) =>
-            `conic-gradient(${theme.vars.palette.primary.light}, ${theme.vars.palette.warning.light}, ${theme.vars.palette.primary.light})`,
+            `${theme.vars.palette.primary.light}`,
           ...sx,
         }}
         {...other}
@@ -129,8 +139,14 @@ export function AccountPopover({ data = [], sx, ...other }: AccountPopoverProps)
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Box sx={{ p: 1 }}>
-          <Button fullWidth color="error" size="medium" variant="text">
-            Logout
+          <Button 
+            fullWidth 
+            color="error" 
+            size="medium" 
+            variant="text"
+            onClick={handleClick}
+          >
+              Logout
           </Button>
         </Box>
       </Popover>

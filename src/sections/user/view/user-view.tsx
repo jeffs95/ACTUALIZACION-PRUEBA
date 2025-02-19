@@ -43,7 +43,7 @@ export function UserView() {
     <DashboardContent>
       <Box display="flex" alignItems="center" mb={5}>
         <Typography variant="h4" flexGrow={1}>
-          Users
+          Sección 2 
         </Typography>
         <Button
           variant="contained"
@@ -54,7 +54,9 @@ export function UserView() {
         </Button>
       </Box>
 
-      <Card>
+      <Card sx={{
+        boxShadow: 20
+      }}>
         <UserTableToolbar
           numSelected={table.selected.length}
           filterName={filterName}
