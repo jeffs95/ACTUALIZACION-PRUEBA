@@ -1,7 +1,6 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
 import Popover from '@mui/material/Popover';
 import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
@@ -13,15 +12,12 @@ import MenuItem, { menuItemClasses } from '@mui/material/MenuItem';
 import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
-
 export type UserProps = {
   id: string;
   name: string;
   role: string;
   status: string;
   company: string;
-  avatarUrl: string;
   isVerified: boolean;
 };
 
@@ -42,6 +38,15 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
     setOpenPopover(null);
   }, []);
 
+
+  const handleClick = async () => {
+    try {
+      console.log("[ID]", row.id);
+    } catch (error) {
+      console.log("[ERROR] >>", error);
+    }
+  };
+
   return (
     <>
       <TableRow hover tabIndex={-1} role="checkbox" selected={selected}>
@@ -51,7 +56,6 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
 
         <TableCell component="th" scope="row">
           <Box gap={2} display="flex" alignItems="center">
-            <Avatar alt={row.name} src={row.avatarUrl} />
             {row.name}
           </Box>
         </TableCell>
@@ -102,14 +106,14 @@ export function UserTableRow({ row, selected, onSelectRow }: UserTableRowProps) 
             },
           }}
         >
-          <MenuItem onClick={handleClosePopover}>
+          <MenuItem onClick={handleClick}>
             <Iconify icon="solar:pen-bold" />
-            Edit
+            Editar
           </MenuItem>
 
           <MenuItem onClick={handleClosePopover} sx={{ color: 'error.main' }}>
             <Iconify icon="solar:trash-bin-trash-bold" />
-            Delete
+            Eliminar
           </MenuItem>
         </MenuList>
       </Popover>

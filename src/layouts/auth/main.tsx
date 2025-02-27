@@ -15,26 +15,6 @@ type MainProps = BoxProps & {
 export function Main({ sx, children, layoutQuery, ...other }: MainProps) {
   const theme = useTheme();
 
-  const renderContent = (
-    <Box
-      sx={{
-        borderTop: '4px solid #0d82ff',
-        boxShadow: 10,
-        py: 5,
-        px: 3,
-        width: 1,
-        borderRadius: 1.3,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        bgcolor: 'background.default',
-        maxWidth: 'var(--layout-auth-content-width)',
-      }}
-    >
-      {children}
-    </Box>
-  );
-
   return (
     <Box
       component="main"
@@ -54,7 +34,34 @@ export function Main({ sx, children, layoutQuery, ...other }: MainProps) {
       }}
       {...other}
     >
-      {renderContent}
+      <Box
+        component="img"
+        src="/assets/images/logo.png"
+        sx={{
+          width: 400,
+          height: 'auto',
+          mb: 2,
+        }}
+      />
+
+      <Box
+        sx={{
+          borderTop: '4px solid #0d82ff',
+          boxShadow: 10,
+          py: 5,
+          px: 3,
+          width: 1,
+          borderRadius: 1.3,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          bgcolor: 'background.default',
+          maxWidth: 'var(--layout-auth-content-width)',
+        }}
+      >
+        {children}
+      </Box>
     </Box>
   );
 }
+

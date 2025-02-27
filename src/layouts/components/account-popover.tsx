@@ -52,7 +52,7 @@ export function AccountPopover({ data = [], sx, ...other }: AccountPopoverProps)
 
   const handleClick = async () => {
     try {
-      router.push('/');
+      router.push('/sign-in');
       console.log('[HOLA]');
       handleClosePopover();
     } catch (error) {

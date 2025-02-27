@@ -14,6 +14,7 @@ import { DashboardContent } from 'src/layouts/dashboard';
 
 import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
+import ModalForm from '../components/ModalForm';
 
 import { TableNoData } from '../table-no-data';
 import { UserTableRow } from '../user-table-row';
@@ -24,18 +25,16 @@ import { emptyRows, applyFilter, getComparator } from '../utils';
 
 import type { UserProps } from '../user-table-row';
 
-// ----------------------------------------------------------------------
-
 export function UserView() {
   const table = useTable();
-
+  const [open, setOpen] = useState(false);
   const [filterName, setFilterName] = useState('');
 
   const dataFiltered: UserProps[] = applyFilter({
     inputData: _users,
     comparator: getComparator(table.order, table.orderBy),
     filterName,
-  });
+  });  
 
   const notFound = !dataFiltered.length && !!filterName;
 
@@ -49,6 +48,7 @@ export function UserView() {
           variant="contained"
           color="inherit"
           startIcon={<Iconify icon="mingcute:add-line" />}
+          onClick={() => setOpen(true)}
         >
           New user
         </Button>
@@ -126,6 +126,8 @@ export function UserView() {
           onRowsPerPageChange={table.onChangeRowsPerPage}
         />
       </Card>
+
+      <ModalForm open={open} handleClose={() => setOpen(false)} />
     </DashboardContent>
   );
 }
