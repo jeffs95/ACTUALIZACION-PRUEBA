@@ -1,12 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-node_modules
-.pnp
+/node_modules
+/.pnp
 .pnp.js
 
 # testing
-coverage
+/coverage
 
 # production
 .next
@@ -14,7 +14,8 @@ coverage
 _static
 out
 dist
-build
+/build
+
 
 # environment variables
 .env
